@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  x:Class="HotReloadSample.MainPage"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+  ios:Page.UseSafeArea="true"
+  BackgroundColor="#191329"
+  NavigationPage.BackButtonTitle=""
+  NavigationPage.HasNavigationBar="false">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="label_color">#CCC</Color>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <Grid x:Name="MainGrid">
+    <ScrollView VerticalOptions="FillAndExpand">
+      <StackLayout
+        Padding="24"
+        Spacing="0"
+        VerticalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="CenterAndExpand">
+          <Label
+            x:Name="WelcomeLabel"
+            FontSize="16"
+            Text="WELCOME TO"
+            TextColor="#f3b998" />
+          <Label
+            x:Name="PosyLabel"
+            FontSize="48"
+            Text="POSY"
+            TextColor="#ffffff" />
+          <Label
+            x:Name="IntroLabel"
+            Margin="0,24,0,16"
+            FontSize="15"
+            Text="This tool lets you quickly calculate the optimal amount of units to buy based on your risk percentage and position size."
+            TextColor="#ffffff" />
+          <StackLayout
+            x:Name="FormLayout"
+            Spacing="16"
+            VerticalOptions="CenterAndExpand">
+            <Grid ColumnSpacing="16">
+              <StackLayout Grid.Column="0" Spacing="8">
+                <Label FontSize="12" Text="RISK AMOUNT %" TextColor="{StaticResource label_color}"/>
+                <Entry Keyboard="Numeric" Text="{Binding RiskPercentage}" Opacity="0.05" />
+              </StackLayout>
+              <StackLayout Grid.Column="1" Spacing="8" >
+                <Label FontSize="12" Text="CAPITAL SIZE" TextColor="{StaticResource label_color}"/>
+                <Entry Keyboard="Numeric" Text="{Binding CapitalSize}" Opacity="0.05" />
+              </StackLayout>
+            </Grid>
+            <StackLayout Spacing="8">
+              <Label FontSize="12" Text="ENTRY PRICE" TextColor="{StaticResource label_color}"/>
+              <Entry Keyboard="Numeric" Text="{Binding EntryPrice}" Opacity="0.05" />
+            </StackLayout>
+            <StackLayout Spacing="8">
+              <Label FontSize="12" Text="STOP PRICE" TextColor="{StaticResource label_color}"/>
+              <Entry Keyboard="Numeric" Text="{Binding StopPrice}" Opacity="0.05" />
+            </StackLayout>
+            <StackLayout Spacing="8">
+              <Label FontSize="12" Text="TARGET PRICE" TextColor="{StaticResource label_color}" />
+              <Entry Keyboard="Numeric" Text="{Binding TargetPrice}" Opacity="0.05" />
+            </StackLayout>
+          </StackLayout>
+        </StackLayout>
+        <Button
+          x:Name="CalculateButton"
+          Margin="16"
+          BackgroundColor="#FFF"
+          FontSize="16"
+          TextColor="#1b1537"
+          Command="{Binding OpenResultCommand}"
+          Text="CALCULATE"
+          VerticalOptions="EndAndExpand" />
+      </StackLayout>
+    </ScrollView>
+  </Grid>
+</ContentPage>
